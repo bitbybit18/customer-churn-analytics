@@ -90,9 +90,9 @@ def plot_monthly_charges(df):
     for churn_val, label, color in zip([0, 1], ['No Churn', 'Churned'], COLORS):
         subset = df[df['Churn'] == churn_val]['MonthlyCharges']
         ax.hist(subset, bins=40, alpha=0.6, color=color,
-                label=f'{label} (mean: \${subset.mean():.0f})', edgecolor='white')
+                label=f'{label} (mean: ${subset.mean():.0f})', edgecolor='white')
 
-    ax.set_xlabel('Monthly Charges (\$)')
+    ax.set_xlabel('Monthly Charges ($)')
     ax.set_ylabel('Number of Customers')
     ax.legend()
 
@@ -194,9 +194,9 @@ def print_key_stats(df):
     print(f"Total Customers      : {len(df):,}")
     print(f"Churned Customers    : {df['Churn'].sum():,}")
     print(f"Overall Churn Rate   : {df['Churn'].mean()*100:.1f}%")
-    print(f"Avg Monthly Charge   : \${df['MonthlyCharges'].mean():.2f}")
+    print(f"Avg Monthly Charge   : ${df['MonthlyCharges'].mean():.2f}")
     print(f"Avg Tenure           : {df['tenure'].mean():.1f} months")
-    print(f"Revenue Lost (Monthly): \${df[df['Churn']==1]['MonthlyCharges'].sum():,.0f}")
+    print(f"Revenue Lost (Monthly): ${df[df['Churn']==1]['MonthlyCharges'].sum():,.0f}")
 
 def main():
     df = load_data()
